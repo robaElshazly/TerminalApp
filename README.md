@@ -26,12 +26,18 @@ This app can be used by running run.sh file. After that, clear instructions will
 
 **How To install** 
 
+
+
+**How the user will find out how to use the app**
+
+After the welcoming message the user will be givin a message that says "If you want to know how to use the app please read the help file in doc folder"
+
 **How to Use Features**
 
 **To see the wecoming message with your name:**
 
 You can either :
-- run the below command in terminal and type your name aftar
+- run the below command in terminal and type your name after.
 ```
 run.sh <your first name> <your last name>
 ```
@@ -43,17 +49,17 @@ Notice that if you skip and not type anything. you will receive an error message
 
 If only one name is entered after run.sh command the program will run as if no names entered and start asking about first and second name.
 
-If more than two names are entered ,the program will run as no arguments are entered and will aske about first and last name. 
+If more than two names are entered, the program will run as no arguments are entered and will aske about first and last name. 
 
 
-**To Enroll in a Course:**
+**To Enrol in a Course:**
 
 After running the app like mentioned in the previous piont, you will then have three options to choose from: show courses available, show enrollments and exit. 
 To enroll you need to 
 1- Choose *"show courses available"* option using the arrow keys and enter button, and a list of available courses will then appear.
 2- Use arrow keys to choose a course from the list.
-3- After choosing a course, another list will appear with the options:Show course details, Enroll, Exit.
-4- To enroll, choose the option "Enroll" using arrow keys.
+3- After choosing a course, another list will appear with the options:Show course details, Enrol, Exit.
+4- To enrol, choose the option "Enrol" using arrow keys.
 5- After enrolling you will go back automatically to the first list which is:  show courses available, show enrollments and exit. 
 
 **To Show Course Details:**
@@ -65,9 +71,9 @@ After running the App, you will then have three options to choose from: show cou
 4- To see details of a course, choose the option "Show course details" using arrow keys.
 5- After showing details 
 
-**To UnEnroll in a Course**
+**To Unenroll in a Course**
 
-After running the App, you will then have three options to choose from: show courses available, show enrollments and exit. Tounenroll you need to:
+After running the App, you will then have three options to choose from: show courses available, show enrollments and exit. To unenrol you need to:
 1-Choose "show enrollments" option using arrow keys and enter button.
 2-A list of courses you are enrolled in will then appear.
 3-Choose the course you need to unenroll from using arrow keys.

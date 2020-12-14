@@ -11,5 +11,13 @@ class School
             courses_names<< course.name
         end   
        return courses_names 
-    end    
+    end  
+    
+    def find_course(name)
+        courses.each do |course|
+          if name==course.name
+            return course
+          end  
+        end  
+      end  
 end    

@@ -52,7 +52,18 @@ js_course=Course.new("Introduction to Java Script ","2 month","$40",html_syllabu
 #js course object generated-----
 courses_list=[html_course,css_course,js_course]
 $code_school=School.new("Code School",courses_list)
-
+#--------
+$prompt = TTY::Prompt.new
+#-------
+def show_courses_list
+  courses_list_answer=$prompt.select("Here are the courses we offer. If you would like to Enroll,select one",$code_school.print_courses_names)
+  enrol_display_answer=$prompt.select("Welcome in #{courses_list_answer} course,choose an option",["Enroll","Display Details about the course","Exit"])
+  if (enrol_display_answer=="Enroll")
+    enrol_course
+    
+  end  
+end  
+#-------
 begin 
  student=parse_argv(ARGV)
 rescue InvalidArguments    #for 1 or more than 2 ARGV arguments

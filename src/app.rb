@@ -68,16 +68,13 @@ def select_course_actions(course_name)
   enrol_display_answer=$prompt.select("Welcome in #{course_name} course,choose an option",["Enroll","Display Details about the course","Go back","Exit"])
   case enrol_display_answer
   when "Enroll"       #featur 1
-   
     $student.enrol_course($code_school.find_course(course_name))
-    puts"you are now enrolled in :"
     puts "#{$student.show_enrollments}"
     if continue?
       start
     else
       return  
-    end 
-      
+    end   
   when "Display Details about the course"     # feature2
     puts "#{$code_school.find_course(course_name)}"
     answer=$prompt.select("what is next!!",["go back","Exit"])
@@ -105,6 +102,7 @@ def start
   when "Show courses list"
     show_courses_list
   when "show my Enrollments" 
+    puts "#{$student.show_enrollments}"
   when "Exit" 
     return 
   end  

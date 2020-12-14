@@ -64,6 +64,17 @@ def show_courses_list
   end  
 end  
 #-------
+def start
+  answer=$prompt.select("Please select and option",["Show courses list","show my Enrollments","Exit"])
+  case answer
+  when "Show courses list"
+    show_courses_list
+  when "show my Enrollments" 
+  when "Exit" 
+    return 
+  end  
+end
+#------------
 begin 
  student=parse_argv(ARGV)
 rescue InvalidArguments    #for 1 or more than 2 ARGV arguments

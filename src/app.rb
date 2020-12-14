@@ -15,8 +15,8 @@ class InvalidArguments < StandardError
 end  
  #------
 def parse_argv(argv_arr)
-  raise InvalidArguments,"invalid arvg argument" if argv_arr.length!=2 && argv_arr.length!=0
-  raise "invalid arvg argument" if !validate_name(argv_arr[0])||!validate_name(argv_arr[1])
+  raise InvalidArguments,"invalid arvg argument" if argv_arr.length!=2 && argv_arr.length!=0  # wrong arguments numbers
+  raise "invalid arvg argument" if !validate_name(argv_arr[0])||!validate_name(argv_arr[1])  #empty arguments
  
  student= Student.new(argv_arr[0],argv_arr[1])
  return student
@@ -55,22 +55,37 @@ $code_school=School.new("Code School",courses_list)
 #--------
 $prompt = TTY::Prompt.new
 #-------
-
-def show_courses_list
-  courses_list_answer=$prompt.select("Here are the courses we offer. If you would like to Enroll,select one",$code_school.print_courses_names)
-  enrol_display_answer=$prompt.select("Welcome in #{courses_list_answer} course,choose an option",["Enroll","Display Details about the course","Go back","Exit"])
+def continue?
+  y_n=$prompt.select("do you want to continue",["yes","no"])
+  if y_n=="yes"
+    return true
+  else 
+    return false
+  end  
+end  
+#---------
+def select_course_actions(course_name)
+  enrol_display_answer=$prompt.select("Welcome in #{course_name} course,choose an option",["Enroll","Display Details about the course","Go back","Exit"])
   case enrol_display_answer
   when "Enroll"       #featur 1
-    $student.enrol_course($code_school.find_course(courses_list_answer))
+   
+    $student.enrol_course($code_school.find_course(course_name))
     puts"you are now enrolled in :"
     puts "#{$student.show_enrollments}"
-    y_n=$prompt.select("do you want to continue",["yes","no"])
-    if y_n=="yes"
+    if continue?
       start
-    else 
-      return
-    end    
-  when "Display Details about the course"  
+    else
+      return  
+    end 
+      
+  when "Display Details about the course"     # feature2
+    puts "#{$code_school.find_course(course_name)}"
+    answer=$prompt.select("what is next!!",["go back","Exit"])
+    if answer=="go back" 
+       select_course_actions(course_name) 
+    else
+          return
+    end      
   when  "Go back"
     show_courses_list
   when "Exit"
@@ -79,6 +94,11 @@ def show_courses_list
   end  
 end  
 #-------
+def show_courses_list
+  courses_list_answer=$prompt.select("Here are the courses we offer. If you would like to Enroll,select one",$code_school.print_courses_names)
+  select_course_actions(courses_list_answer)
+end
+#------------
 def start
   answer=$prompt.select("Please select and option",["Show courses list","show my Enrollments","Exit"])
   case answer
@@ -89,7 +109,8 @@ def start
     return 
   end  
 end
-#------------
+#---------
+
 begin 
  $student=parse_argv(ARGV)
 rescue InvalidArguments    #for 1 or more than 2 ARGV arguments

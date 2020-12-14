@@ -3,11 +3,17 @@ class Course
    attr_reader :name
     def initialize(name,duration,price,syllabus)
         @name=name
-        @duration=0
-        @price=0
-        @syllabus=[]
+        @duration=duration
+        @price=price
+        @syllabus=syllabus
         @@course_no+=1
        @course_id= @@course_no
+    end   
+    
+    def to_s
+        puts "Course name:#{@name} Course duration:#{@duration} Course price:#{@price} "
+        puts "Course syllabus:"
+        puts @syllabus
     end    
     
 end

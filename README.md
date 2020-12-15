@@ -50,14 +50,14 @@ If only one name is entered or more than two names are entered, the program will
 2- **To Enrol in a Course:**
 
 After running the app like mentioned in the previous piont, you will then have three options to choose from: show courses list, show enrollments and exit. 
-To enroll you need to 
-1- Choose *"show courses list"* option using the arrow keys and enter button, and a list of available courses will then appear.
-2- Use arrow keys to choose a course from the list.
-3- After choosing a course, another list will appear with the options:Show course details, Enrol, go back, Exit.
-4- To enrol, choose the option "Enrol" using arrow keys.
-5- If you choose "go back", you will go back to the courses list.
-6- If you choose "exit", you eill end the program.
-7- After enrolling you will go back automatically to the first list which is:  show courses available, show enrollments and exit. And the course will be added to enrollments list.
+To enroll you need to: 
+    1.Choose *"show courses list"* option using the arrow keys and enter button, and a list of available courses will then appear.
+    2.Use arrow keys to choose a course from the list.
+    3. After choosing a course, another list will appear with the options:Show course details, Enrol, go back, Exit.
+    4. To enrol, choose the option "Enrol" using arrow keys.
+    5. If you choose "go back", you will go back to the courses list.
+    6. If you choose "exit", you eill end the program.
+    7. After enrolling you will go back automatically to the first list which is:  show courses available, show enrollments and exit. And the course will be added to enrollments list.
 
 *Errors expected and how they are handled*
 
@@ -66,10 +66,15 @@ Enrolling in a course that they already enrolled in. This will be handled by not
 3- **To Show Course Details:**
 
 After running the App, you will then have three options to choose from: show courses available, show enrollments and exit. To show details of a course you need to: 
+
 1- Choose *"show courses available"* option using the arrow keys and enter button, and a list of available courses will then appear.
+
 2- Use arrow keys to choose a course from the list.
+
 3- After choosing a course, another list will appear with the options:Show course details, Enroll, Exit.
+
 4- To see details of a course, choose the option "Show course details" using arrow keys.
+
 5- After showing details 
 
 *Errors expected and how they are handled*
@@ -79,9 +84,16 @@ Since the user is choosing a course from a displayed list that already exist usi
 4- **To Unenroll in a Course**
 
 After running the App, you will then have three options to choose from: show courses available, show enrollments and exit. To unenrol you need to:
-1- Choose "show enrollments" option using arrow keys and enter button.
-2- A list of courses you are enrolled in will then appear and also an option to go back.
-3- Choose the course you need to unenroll from using arrow keys.
-4- A confirmation message about unenrolling will appear with yes or no options.
-5- If you choose yes, your course will be deleted from your enrollment list and  you will go back automatically to the first list which is:  show courses available, show enrollments and exit
-6- if you choose no, you will go back to enrollment list.
+
+  1- Choose "show enrollments" option using arrow keys and enter button.
+
+  2- A list of courses you are enrolled in will then appear and also an option to go back.
+
+  3- Choose the course you need to unenroll from using arrow keys.
+
+  4- A confirmation message about unenrolling will appear with yes or no options.
+
+  5- If you choose yes, your course will be deleted from your enrollment list and  you will go back automatically
+  to the first list which is:  show courses available, show enrollments and exit.
+
+  6- If you choose no, you will go back to enrollment list.

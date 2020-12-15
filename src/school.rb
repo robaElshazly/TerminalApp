@@ -18,6 +18,7 @@ class School
           if name==course.name
             return course
           end  
-        end  
+        end 
+        return false 
       end  
 end    

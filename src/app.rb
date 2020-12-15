@@ -52,6 +52,7 @@ js_course=Course.new("Introduction to Java Script ","2 month","$40",html_syllabu
 #js course object generated-----
 courses_list=[html_course,css_course,js_course]
 $code_school=School.new("Code School",courses_list)
+#code_school
 #--------
 $prompt = TTY::Prompt.new
 #-------
@@ -67,15 +68,12 @@ end
 def select_course_actions(course_name)
   enrol_display_answer=$prompt.select("Welcome in #{course_name} course,choose an option",["Enroll","Display Details about the course","Go back","Exit"])
   case enrol_display_answer
-  when "Enroll"       #featur 1
+  when "Enroll"       #featur 1 (enrolling)
     $student.enrol_course($code_school.find_course(course_name))
+    puts "your enrollments list :"
     puts "#{$student.show_enrollments}"
-    if continue?
-      start
-    else
-      return  
-    end   
-  when "Display Details about the course"     # feature2
+    start  
+  when "Display Details about the course"     # feature2 (display details of the course)
     puts "#{$code_school.find_course(course_name)}"
     answer=$prompt.select("what is next!!",["go back","Exit"])
     if answer=="go back" 
@@ -89,7 +87,32 @@ def select_course_actions(course_name)
     return  
     
   end  
-end  
+end 
+#-------
+def select_enrollment_action
+  if $student.enrollments.empty?
+    puts "you are not enrolled in any courses"
+    if continue?
+      start
+    else
+      return 
+    end   
+  else   
+    chosen_course_name=$prompt.select("Below is courses list you are enrolled in, select a course if you would like to unenroll",[$student.show_enrollments,"go back"].flatten)
+    if chosen_course_name=="go back"
+      start
+    end 
+    action=$prompt.select("would you like to unenroll in#{chosen_course_name}?",["yes","no"])
+    case action 
+    when "yes"     #feature 3 (unenrolling)
+      $student.unenroll_course($code_school.find_course(chosen_course_name))
+      puts "you are unenrolled from #{chosen_course_name}"
+      start
+    when "no"  
+      select_enrollment_action
+    end  
+  end 
+end 
 #-------
 def show_courses_list
   courses_list_answer=$prompt.select("Here are the courses we offer. If you would like to Enroll,select one",$code_school.print_courses_names)
@@ -102,7 +125,7 @@ def start
   when "Show courses list"
     show_courses_list
   when "show my Enrollments" 
-    puts "#{$student.show_enrollments}"
+    select_enrollment_action
   when "Exit" 
     return 
   end  

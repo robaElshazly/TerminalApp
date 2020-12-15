@@ -1,5 +1,6 @@
 class Student
     attr_accessor :first_name , :last_name
+    attr_reader :enrollments
     def initialize(first_name,last_name)
       @first_name=first_name
       @last_name=last_name
@@ -12,12 +13,16 @@ class Student
         puts "you are already enrolled in this course"
       end  
     end  
+
+    def unenroll_course(course)
+      @enrollments.delete(course)
+    end
+
     def show_enrollments
       enrollments_names=[]
       @enrollments.each do |course|
         enrollments_names<<course.name
-      end
-      puts"you are now enrolled in :"   
+      end  
       return enrollments_names  
     end    
 end

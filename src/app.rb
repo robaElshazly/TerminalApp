@@ -45,10 +45,10 @@ html_syllabus=["chapter1","chapter2","chapter3"]
 html_course=Course.new("Html Fundementals","1 month","$25",html_syllabus)
 #html course object generated-----
 css_syllabus=["chapter1","chapter2","chapter3"]
-css_course=Course.new("CSS Fundementals","2 weeks","$15",html_syllabus)
+css_course=Course.new("CSS Fundementals","2 weeks","$15",css_syllabus)
 #css course object generated-----
 js_syllabus=["chapter1","chapter2","chapter3"]
-js_course=Course.new("Introduction to Java Script ","2 month","$40",html_syllabus)
+js_course=Course.new("Introduction to Java Script ","2 month","$40",js_syllabus)
 #js course object generated-----
 courses_list=[html_course,css_course,js_course]
 $code_school=School.new("Code School",courses_list)
@@ -101,16 +101,17 @@ def select_enrollment_action
     chosen_course_name=$prompt.select("Below is courses list you are enrolled in, select a course if you would like to unenroll",[$student.show_enrollments,"go back"].flatten)
     if chosen_course_name=="go back"
       start
-    end 
-    action=$prompt.select("would you like to unenroll in#{chosen_course_name}?",["yes","no"])
-    case action 
-    when "yes"     #feature 3 (unenrolling)
-      $student.unenroll_course($code_school.find_course(chosen_course_name))
-      puts "you are unenrolled from #{chosen_course_name}"
-      start
-    when "no"  
-      select_enrollment_action
-    end  
+    else 
+      action=$prompt.select("would you like to unenroll in #{chosen_course_name}?",["yes","no"])
+      case action 
+      when "yes"     #feature 3 (unenrolling)
+        $student.unenroll_course($code_school.find_course(chosen_course_name))
+        puts "you are unenrolled from #{chosen_course_name}"
+        start
+      when "no"  
+        select_enrollment_action
+      end  
+    end   
   end 
 end 
 #-------

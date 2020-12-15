@@ -1,6 +1,6 @@
 class Course
    @@course_no=0
-   attr_reader :name
+   attr_reader :name , :duration , :price , :syllabus
     def initialize(name,duration,price,syllabus)
         @name=name
         @duration=duration

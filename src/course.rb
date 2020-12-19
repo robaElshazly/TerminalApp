@@ -11,9 +11,7 @@ class Course
     end   
     
     def to_s
-        puts "Course name:#{@name} Course duration:#{@duration} Course price:#{@price} "
-        puts "Course syllabus:"
-        puts @syllabus
+       return "\n Course name:".blue+"#{@name}"+"\n Course duration:".blue+"#{@duration}"+"\n Course price:".blue+"#{@price}"+" \n Course syllabus:".blue+"\n #{@syllabus}"
     end    
     
 end

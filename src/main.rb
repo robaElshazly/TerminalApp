@@ -57,7 +57,7 @@ $code_school=School.new("Code School",courses_list)
 $prompt = TTY::Prompt.new
 #-------
 def continue?
-  y_n=$prompt.select("do you want to continue",["yes","no"])
+  y_n=$prompt.select("do you want to continue".light_blue,["yes","no"])
   if y_n=="yes"
     return true
   else 
@@ -66,22 +66,26 @@ def continue?
 end  
 #---------
 def select_course_actions(course_name)
-  enrol_display_answer=$prompt.select("Welcome in #{course_name} course,choose an option",["Enroll","Display Details about the course","Go back","Exit"])
+  enrol_display_answer=$prompt.select("Welcome in #{course_name} course,choose an option".light_blue,["Enrol","Display Details about the course","Go back","Exit"])
   case enrol_display_answer
-  when "Enroll"       #featur 1 (enrolling)
+  when "Enrol"       #featur 1 (enrolling)
+    puts "------------------------------------------------------------------------------------"
     $student.enrol_course($code_school.find_course(course_name))
     puts "your enrollments list :"
     puts "#{$student.show_enrollments}"
     start  
   when "Display Details about the course"     # feature2 (display details of the course)
+    puts "------------------------------------------------------------------------------------"
     puts "#{$code_school.find_course(course_name)}"
-    answer=$prompt.select("what is next!!",["go back","Exit"])
+    puts "------------------------------------------------------------------------------------"
+    answer=$prompt.select("would you like to".light_blue,["go back","Exit"])
     if answer=="go back" 
        select_course_actions(course_name) 
     else
           return
     end      
   when  "Go back"
+    puts "------------------------------------------------------------------------------------"
     show_courses_list
   when "Exit"
     return  
@@ -91,22 +95,23 @@ end
 #-------
 def select_enrollment_action
   if $student.enrollments.empty?
-    puts "you are not enrolled in any courses"
+    puts "you are not enrolled in any courses".light_blue
     if continue?
       start
     else
       return 
     end   
   else   
-    chosen_course_name=$prompt.select("Below is courses list you are enrolled in, select a course if you would like to unenroll",[$student.show_enrollments,"go back"].flatten)
+    chosen_course_name=$prompt.select("Below is courses list you are enrolled in, select a course if you would like to unenroll".light_blue,[$student.show_enrollments,"go back"].flatten)
     if chosen_course_name=="go back"
       start
     else 
-      action=$prompt.select("would you like to unenroll in #{chosen_course_name}?",["yes","no"])
+      puts "------------------------------------------------------------------------------------"
+      action=$prompt.select("would you like to unenroll in #{chosen_course_name}?".light_blue,["yes","no"])
       case action 
       when "yes"     #feature 3 (unenrolling)
         $student.unenroll_course($code_school.find_course(chosen_course_name))
-        puts "you are unenrolled from #{chosen_course_name}"
+        puts "you are unenrolled from #{chosen_course_name}".red
         start
       when "no"  
         select_enrollment_action
@@ -116,16 +121,25 @@ def select_enrollment_action
 end 
 #-------
 def show_courses_list
-  courses_list_answer=$prompt.select("Here are the courses we offer. If you would like to Enroll,select one",$code_school.print_courses_names)
+  courses_list_answer=$prompt.select("Here are the courses we offer. If you would like to Enroll,select one".light_blue,[$code_school.print_courses_names,"go back"].flatten)
+ if(courses_list_answer=="go back")
+  puts "------------------------------------------------------------------------------------"
+  start
+ else
+  puts "------------------------------------------------------------------------------------"
   select_course_actions(courses_list_answer)
+ end 
 end
 #------------
 def start
-  answer=$prompt.select("Please select and option",["Show courses list","show my Enrollments","Exit"])
+  puts "------------------------------------------------------------------------------------"
+  answer=$prompt.select("Please select an option".light_blue,["Show courses list","show my Enrollments","Exit"])
   case answer
   when "Show courses list"
+    puts "------------------------------------------------------------------------------------"
     show_courses_list
   when "show my Enrollments" 
+    puts "------------------------------------------------------------------------------------"
     select_enrollment_action
   when "Exit" 
     return 
@@ -136,14 +150,14 @@ end
 begin 
  $student=parse_argv(ARGV)
 rescue InvalidArguments    #for 1 or more than 2 ARGV arguments
-  puts "you did not enter right number of command line arguments"
+  puts "you did not enter right number of command line arguments".red
   $student=get_username
 rescue     #for 0 ARGV argument
   $student=get_username  
 end
 #--------
 puts "#{ARGV.length}"
-puts "Welcome #{$student.first_name} #{$student.last_name} in our online learning school"
-puts "If you need help to know how to use this app please read throgh help file in doc folder"
+puts "Welcome #{$student.first_name} #{$student.last_name} in our online learning school".light_blue
+puts "If you need help to know how to use this app please read throgh help file in doc folder".light_blue
 
 start

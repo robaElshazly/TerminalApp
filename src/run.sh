@@ -7,10 +7,10 @@ clear
 # run the app with either 2 parameters or no parameters
 if [ $# -eq 2 ] 
 then
- ruby app.rb $1 $2
+ ruby main.rb $1 $2
 elif [ $# -gt 2 ] || [ $# -eq 1 ]
  then
-ruby app.rb $*
+ruby main.rb $*
 else
- ruby app.rb
+ ruby main.rb
 fi

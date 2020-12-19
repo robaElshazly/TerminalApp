@@ -13,6 +13,10 @@ class School
        return courses_names 
     end  
     
+    def add_course(course)
+      @courses<<course
+      @courses.flatten
+    end 
     def find_course(name)
         courses.each do |course|
           if name==course.name

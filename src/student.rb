@@ -10,12 +10,14 @@ class Student
       if !@enrollments.include?(course)
       @enrollments<<course
       else 
-        puts "you are already enrolled in this course"
+        puts "you are already enrolled in this course".red
       end  
     end  
 
     def unenroll_course(course)
-      @enrollments.delete(course)
+     if enrollments.include?(course)
+       @enrollments.delete(course)
+     end 
     end
 
     def show_enrollments

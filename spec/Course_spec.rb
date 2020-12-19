@@ -22,5 +22,19 @@ describe "a course object can be found by it's name" do
         html_course=Course.new("html Fundementals","1 weeks","$20",html_syllabus)
         code_school=School.new("Code School",[css_course,html_course])
         expect(code_school.find_course("CSS Fundementals")).to eq(css_course)
-    end    
+    end  
+    it "returns false when a wrong course name is entered" do    # used for display course information feature
+        css_course=Course.new("CSS Fundementals","2 weeks","$15",css_syllabus)
+        html_course=Course.new("html Fundementals","1 weeks","$20",html_syllabus)
+        code_school=School.new("Code School",[css_course,html_course])
+        expect(code_school.find_course("Wrong course name")).to eq(false)
+    end 
+    it "shows right message when using put" do      # used for display course information feature
+        css_course=Course.new("CSS Fundementals","2 weeks","$15",css_syllabus)
+        expect(css_course.to_s).to eq("Course name:#{css_course.name} Course duration:#{css_course.duration} Course price:#{css_course.price} \n Course syllabus: \n #{css_course.syllabus}")
+    end   
 end
+
+describe "shoow course details" do
+   
+end    

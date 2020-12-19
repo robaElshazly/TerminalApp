@@ -36,5 +36,12 @@ describe Student do
         expect(student.enrollments.length).to eq(1)
         expect(student.enrollments).to eq([html_course])
       end    
+      it "can't unenroll from a course that is not in enrollments" do     #for unenroll feature
+        student=Student.new(first_name,last_name)
+        student.enrol_course(css_course) 
+        student.unenroll_course(html_course)
+        expect(student.enrollments.length).to eq(1)
+        expect(student.enrollments).to eq([css_course])
+      end    
     
 end    
